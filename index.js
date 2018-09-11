@@ -10,12 +10,7 @@ var server = http.createServer(function (request, response) {
 	response.setHeader("Content-Type", "text/html; charset=utf-8");
     if (request.method === 'GET' && request.url === '/index') {
 		fs.readFile('./index.html', 'utf-8', function(err, data) {
-			console.log(data); 
-/* zrozumialem, ze  ma byc, jak powyzej, ale alternatywnie moze byc pewnie cos w stylu:
-			fs.writeFile('./downloaded/index.html', data, function() {
-			console.log('index.html has been saved to the "downloaded" directory!');
-	});
-*/
+			response.write(data); 
 			response.end();
 		});
     } else {
